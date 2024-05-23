@@ -66,4 +66,5 @@ class Player {
             }));
         this.frames = 0;
     }
+   }
 }
