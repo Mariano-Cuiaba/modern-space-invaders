@@ -20,34 +20,34 @@ class Invader {
   }
   draw() {
     c.drawImage(
-        this.image,
-        this.position.x,
-        this.position.y,
-        this.width,
-        this.height
+      this.image,
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
     );
   }
   upade() {
-    if(this.image) {
-        this.draw();
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
+    if (this.image) {
+      this.draw();
+      this.position.x += this.velocity.x;
+      this.position.y += this.velocity.y;
     }
   }
 
   shoot(invaderProjectile) {
     audio.enemyShoot.play();
     invaderProjectile.push(
-        new InvaderProjectile({
-          position: {
-            x: this.position.x + this.width / 2,
-            y: this.position.y + this.height
-          },
-          velocity: {
-            x: 0,
-            y: 10
-          }
-        })
-    )
+      new InvaderProjectile({
+        position: {
+          x: this.position.x + this.width / 2,
+          y: this.position.y + this.height
+        },
+        velocity: {
+          x: 0,
+          y: 5
+        }
+      })
+    );
   }
 }
