@@ -411,6 +411,7 @@ function animate() {
   frames++;
 }
 
+
 document.querySelector("#startButton").addEventListener("click", () => {
   audio.backgroundMusic.play();
   audio.start.play();
@@ -426,4 +427,48 @@ document.querySelector("#restartButton").addEventListener("click", () => {
   document.querySelector("#restartScreen").style.display = "none";
   init();
   animate();
+});
+
+addEventListener("keydown", ({ key }) => {
+  if(game.over) return;
+
+  switch(key) {
+    case "ArrowLeft":
+      keys.ArrowLeft.pressed = true;
+      break;
+    case "ArrowRight":
+      keys.ArrowRight.pressed = true;
+      break;
+    case " ":
+      keys.space.pressed = true;
+      
+      if(player.powerUp === "Metralhadora") return;
+
+      audio.shoot.play();
+      projetctiles.push(
+        new Projectile({
+          position: {
+            x: player.position.x + player.width / 2,
+            y: player.position.y
+          },
+          velocity: {
+            x: 0,
+            y: -10
+          },
+        })
+      ); 
+      break;
+  }
+});
+
+addEventListener("keyup", ({ key }) => {
+  case "ArrowLeft":
+    keys.ArrowLeft.pressed = false;
+    break;
+  case "ArrowRight":
+    keys.ArrowRight.pressed = false;
+    break;
+  case " ":
+    keys.space.pressed = false;
+    break;
 });
