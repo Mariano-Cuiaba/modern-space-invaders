@@ -4,7 +4,6 @@ function randomBetween(min, max) {
 
 function createScoreLabel({ score = 100, object }) {
   const scoreLabel = document.createElement("label");
-
   scoreLabel.innerHTML = score;
   scoreLabel.style.position = "absolute";
   scoreLabel.style.color = "white";
@@ -14,7 +13,7 @@ function createScoreLabel({ score = 100, object }) {
 
   document.querySelector("#parentDiv").appendChild(scoreLabel);
 
-  WebGLSampler.top(scoreLabel, {
+  gsap.to(scoreLabel, {
     opacity: 0,
     y: -30,
     duration: 0.75,
@@ -24,7 +23,7 @@ function createScoreLabel({ score = 100, object }) {
   });
 }
 
-function rectangularCollission({ rectangle1, rectangle2 }) {
+function rectangularCollision({ rectangle1, rectangle2 }) {
   return (
     rectangle1.position.y + rectangle1.height >= rectangle2.position.y &&
     rectangle1.position.x + rectangle1.width >= rectangle2.position.x &&
@@ -34,7 +33,7 @@ function rectangularCollission({ rectangle1, rectangle2 }) {
 
 function createParticles({ object, color, fades }) {
   for (let i = 0; i < 15; i++) {
-    Particles.push(
+    particles.push(
       new Particle({
         position: {
           x: object.position.x + object.width / 2,
@@ -46,7 +45,7 @@ function createParticles({ object, color, fades }) {
         },
         radius: Math.random() * 3,
         color: color || "#BAA0DE",
-        fades: fades
+        fades
       })
     );
   }
