@@ -6,7 +6,7 @@ class Invader {
     };
 
     const image = new Image();
-    image.src = "./img/wandersoninvader.png";
+    image.src = "./img/invader.png";
     image.onload = () => {
       const scale = 0.1;
       this.image = image;
